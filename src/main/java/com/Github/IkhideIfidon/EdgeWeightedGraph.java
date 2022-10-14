@@ -1,6 +1,7 @@
 package com.Github.IkhideIfidon;
 
 import java.io.*;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,10 +40,10 @@ public class EdgeWeightedGraph {
 
     public void addEdge(Edge edge) {
         // In an Undirected Graph, edge is added twice.
-        int start = edge.start();
-        int end = edge.end();
-        adjacent[start].add(edge);
-        adjacent[end].add(edge);
+        int v = edge.start();
+        int u = edge.end();
+        adjacent[v].add(edge);
+        adjacent[u].add(edge);
         E++;
     }
 
@@ -54,4 +55,34 @@ public class EdgeWeightedGraph {
             result.addAll(adjacent[i]);
         return result;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < V; i++) {
+            sb.append(neighborsToString(i));
+
+            for (Edge edge : adjacent[i]) {
+                sb.append(edge.toString());
+                sb.append("-->");
+            }
+
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String neighborsToString(int v) {
+        StringBuilder sb = new StringBuilder("[");
+
+        Iterator<Edge> iter = adjacent[v].iterator();
+        while (iter.hasNext()) {
+            sb.append(iter.next());
+            if (iter.hasNext())
+                sb.append("-->");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
 }

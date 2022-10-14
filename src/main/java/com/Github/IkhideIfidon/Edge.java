@@ -47,6 +47,6 @@ public class Edge implements Comparable<Edge> {
 
     @Override
     public String toString() {
-        return String.format("%d--->%d %.2f", start(), end(), weight());
+        return String.format("[%d][%d][%.2f]", start(), end(), weight());
     }
 }
