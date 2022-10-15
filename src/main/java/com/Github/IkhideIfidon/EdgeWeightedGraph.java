@@ -40,8 +40,8 @@ public class EdgeWeightedGraph {
 
     public void addEdge(Edge edge) {
         // In an Undirected Graph, edge is added twice.
-        int v = edge.start();
-        int u = edge.end();
+        int v = edge.from();
+        int u = edge.to();
         adjacent[v].add(edge);
         adjacent[u].add(edge);
         E++;
