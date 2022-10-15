@@ -23,16 +23,16 @@ public class LazyPrimMST {
         visit(G, 0);
         while (!priorityQueue.isEmpty()) {
             Edge edge = priorityQueue.poll();
-            int from = edge.from();
-            int to = edge.to();
-            if (marked[from] && marked[to])
+            int v = edge.either();
+            int w = edge.other(v);
+            if (marked[v] && marked[w])
                 continue;
             mst.offer(edge);                            // Add edge to tree
             weight += edge.weight();
-            if (!marked[from])
-                visit(G, from);
-            if (!marked[to])
-                visit(G, to);
+            if (!marked[v])
+                visit(G, v);
+            if (!marked[w])
+                visit(G, w);
         }
     }
 
@@ -40,7 +40,7 @@ public class LazyPrimMST {
         // Mark v and add to priorityQueue all edges from v to unmarked vertices
         marked[v] = true;
         for (Edge edge : G.neighbor(v)) {
-            if (!marked[edge.to()])
+            if (!marked[edge.other(v)])
                 priorityQueue.offer(edge);
         }
     }

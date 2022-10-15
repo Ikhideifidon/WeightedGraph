@@ -27,10 +27,10 @@ public class EdgeWeightedGraph {
         for (int i = 0; i < E(); i++) {
             // Add an edge
             String[] stringSplit = in.readLine().split("[ \\t]+"); // capture one or more space and tab
-            int start = Integer.parseInt(stringSplit[0]);
-            int end = Integer.parseInt(stringSplit[1]);
+            int v = Integer.parseInt(stringSplit[0]);
+            int w = Integer.parseInt(stringSplit[1]);
             double weight = Double.parseDouble(stringSplit[2]);
-            addEdge(new Edge(start, end, weight));
+            addEdge(new Edge(v, w, weight));
             E--;
         }
     }
@@ -40,15 +40,16 @@ public class EdgeWeightedGraph {
 
     public void addEdge(Edge edge) {
         // In an Undirected Graph, edge is added twice.
-        int v = edge.from();
-        int u = edge.to();
+        int v = edge.either();
+        int w = edge.other(v);
         adjacent[v].add(edge);
-        adjacent[u].add(edge);
+        adjacent[w].add(edge);
         E++;
     }
 
     public Iterable<Edge> neighbor(int v) { return adjacent[v]; }
 
+    @SuppressWarnings("unused")
     public Iterable<Edge> edges() {
         List<Edge> result = new LinkedList<>();
         for (int i = 0; i < V(); i++) {

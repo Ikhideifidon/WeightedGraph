@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57f73885-244b-453e-9e95-0724ed5828a5" name="Changes" comment="WeightedGraph">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/LazyPrimMST.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/EdgeWeightedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/EdgeWeightedGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/LazyPrimMST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/LazyPrimMST.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665809303992</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="WeightedGraph">
+      <created>1665849521357</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1665849521357</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,21 +102,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="WeightedGraph" />
     <option name="LAST_COMMIT_MESSAGE" value="WeightedGraph" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/LazyPrimMST.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/Github/IkhideIfidon/LazyPrimMST.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

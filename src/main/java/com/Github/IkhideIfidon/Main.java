@@ -19,9 +19,6 @@ public class Main {
             weightedGraph.addEdge(e);
         }
 
-        System.out.println(weightedGraph);
-
-
 
         System.out.println("\nFrom File");
         final String file = "src/main/resources/tinyEWG.txt";
@@ -38,9 +35,6 @@ public class Main {
         LazyPrimMST prim = new LazyPrimMST(weightedGraph);
         System.out.println(prim.edges());
         System.out.println(prim.weight());
-
-        System.out.println(weightedGraph.neighbor(0));
-
 
     }
 }
