@@ -1,5 +1,6 @@
 package com.Github.IkhideIfidon;
 
+@SuppressWarnings("ClassCanBeRecord")
 public class Edge implements Comparable<Edge> {
     // Instance Variables
     private final int start;

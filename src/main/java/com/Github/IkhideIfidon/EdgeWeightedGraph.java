@@ -24,7 +24,7 @@ public class EdgeWeightedGraph {
     public EdgeWeightedGraph(BufferedReader in) throws IOException {
         this(Integer.parseInt(in.readLine()));
         this.E = Integer.parseInt(in.readLine());
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < E(); i++) {
             // Add an edge
             String[] stringSplit = in.readLine().split("[ \\t]+"); // capture one or more space and tab
             int start = Integer.parseInt(stringSplit[0]);
@@ -47,41 +47,35 @@ public class EdgeWeightedGraph {
         E++;
     }
 
-    public Iterable<Edge> adjacent(int v) { return adjacent[v]; }
+    public Iterable<Edge> neighbor(int v) { return adjacent[v]; }
 
     public Iterable<Edge> edges() {
         List<Edge> result = new LinkedList<>();
-        for (int i = 0; i < V; i++)
+        for (int i = 0; i < V(); i++) {
             result.addAll(adjacent[i]);
+        }
         return result;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < V; i++) {
-            sb.append(neighborsToString(i));
+        for (int v = 0; v < V; v++) {
+            sb.append(String.format("\t[%d]", v));
+            sb.append(" \u279E ");
 
-            for (Edge edge : adjacent[i]) {
-                sb.append(edge.toString());
-                sb.append("-->");
+            // If vertex 'i' has no neighbors
+            if (adjacent[v].size() == 0)
+                sb.append("[]");
+
+            Iterator<Edge> iter = neighbor(v).iterator();
+            while (iter.hasNext()) {
+                sb.append(iter.next().toString());
+                if (iter.hasNext())
+                    sb.append("-->");
             }
-
             sb.append("\n");
         }
-        return sb.toString();
-    }
-
-    public String neighborsToString(int v) {
-        StringBuilder sb = new StringBuilder("[");
-
-        Iterator<Edge> iter = adjacent[v].iterator();
-        while (iter.hasNext()) {
-            sb.append(iter.next());
-            if (iter.hasNext())
-                sb.append("-->");
-        }
-        sb.append("]");
         return sb.toString();
     }
 
