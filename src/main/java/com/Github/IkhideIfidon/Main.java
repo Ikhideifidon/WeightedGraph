@@ -35,6 +35,15 @@ public class Main {
         LazyPrimMST prim = new LazyPrimMST(weightedGraph);
         System.out.println(prim.edges());
         System.out.println(prim.weight());
+        System.out.println("\n");
+
+        EdgeWeightedGraph copiedEdgeWeightedGraph = new EdgeWeightedGraph(weightedGraph);
+        System.out.println(copiedEdgeWeightedGraph);
+
+        weightedGraph.addEdge(new Edge(2, 5, 0.13));
+        System.out.println(weightedGraph);
+        System.out.println(copiedEdgeWeightedGraph);
+
 
     }
 }

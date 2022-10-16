@@ -6,9 +6,9 @@ import java.util.PriorityQueue;
 
 public class LazyPrimMST {
     // Instance Variables
-    private final boolean[] marked;
-    private final Deque<Edge> mst;
-    private final PriorityQueue<Edge> priorityQueue;
+    private final boolean[] marked;                        // MST vertices
+    private final Deque<Edge> mst;                         // MST Edges
+    private final PriorityQueue<Edge> priorityQueue;       // Crossing (and ineligible) edges
     private double weight;
 
     // Constructor
@@ -17,17 +17,17 @@ public class LazyPrimMST {
             throw new NullPointerException("Edge Weighted Graph cannot be null");
         marked = new boolean[G.V()];
         mst = new LinkedList<>();
-        priorityQueue = new PriorityQueue<>();      // Natural Order
+        priorityQueue = new PriorityQueue<>();         // Natural Order
 
         // Put all eligible edges in the mst
-        visit(G, 0);
+        visit(G, 0);                                // Assumes Graph G is connected
         while (!priorityQueue.isEmpty()) {
             Edge edge = priorityQueue.poll();
             int v = edge.either();
             int w = edge.other(v);
-            if (marked[v] && marked[w])
+            if (marked[v] && marked[w])                // Ineligible edge
                 continue;
-            mst.offer(edge);                            // Add edge to tree
+            mst.offer(edge);                           // Add edge to tree
             weight += edge.weight();
             if (!marked[v])
                 visit(G, v);

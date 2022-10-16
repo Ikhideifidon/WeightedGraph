@@ -1,6 +1,7 @@
 package com.Github.IkhideIfidon;
 
 import java.io.*;
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,12 +14,15 @@ public class EdgeWeightedGraph {
 
     // Constructor
     public EdgeWeightedGraph(int V) {
-        this.V = V;
-        this.E = 0;
-        //noinspection unchecked
-        adjacent = (List<Edge>[]) new LinkedList[V];
-        for (int v = 0; v < V; v++)
-            adjacent[v] = new LinkedList<>();
+        if (V > 0) {
+            this.V = V;
+            this.E = 0;
+            //noinspection unchecked
+            adjacent = (List<Edge>[]) new LinkedList[V];
+            for (int v = 0; v < V; v++)
+                adjacent[v] = new LinkedList<>();
+        } else
+            throw new ArrayIndexOutOfBoundsException("Number of Vertices cannot be less than 1.");
     }
 
     public EdgeWeightedGraph(BufferedReader in) throws IOException {
@@ -35,6 +39,30 @@ public class EdgeWeightedGraph {
         }
     }
 
+    // Copy Constructor
+    public EdgeWeightedGraph(EdgeWeightedGraph that) {
+        /*
+            Instance Variables
+            V    ............Immutable
+            E    ............Immutable
+            adjacent ........Mutable
+         */
+        this(that.V);
+
+        Deque<Edge> queue = new LinkedList<>();
+        for (int v = 0; v < this.V; v++) {
+            for (Edge edge : that.neighbor(v)) {
+                queue.offer(edge);
+            }
+
+            while (!queue.isEmpty())
+                adjacent[v].add(queue.poll());
+
+        }
+
+        this.E = that.E;
+    }
+
     public int V() { return V; }
     public int E() { return E; }
 
@@ -47,7 +75,12 @@ public class EdgeWeightedGraph {
         E++;
     }
 
-    public Iterable<Edge> neighbor(int v) { return adjacent[v]; }
+    public Iterable<Edge> neighbor(int v) {
+        if (v >= 0 && v < V)
+            return adjacent[v];
+        else
+            throw new ArrayIndexOutOfBoundsException("Inconsistent vertex");
+    }
 
     @SuppressWarnings("unused")
     public Iterable<Edge> edges() {

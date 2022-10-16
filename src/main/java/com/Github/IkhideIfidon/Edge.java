@@ -4,13 +4,16 @@ public class Edge implements Comparable<Edge> {
     // Instance Variables
     private final int v;
     private final int w;
-    private final double weight;
+    private final double weight;                    // Negative edge weights are allowed.
 
     // Constructor
     public Edge(int v, int w, double weight) {
-        this.v = v;
-        this.w = w;
-        this.weight = weight;
+        if (v >= 0 && w >= 0) {
+            this.v = v;
+            this.w = w;
+            this.weight = weight;
+        } else
+            throw new IllegalArgumentException("Inconsistent Vertices");
     }
 
     public int either() { return v; }
